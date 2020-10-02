@@ -642,19 +642,27 @@ $(document).on('mouseleave','.mapTileContainer.potentialNatureCubeTilePlacement'
 	$('.mapTileContainer.potentialNatureCubeTilePlacement .tileContainer').remove();
 });
 
-$(document).on(touchEvent,'.mapTileContainer.potentialNatureCubeTilePlacement .tileContainer',function(){
+$(document).on(touchEvent,'.mapTileContainer.potentialNatureCubeTilePlacement',function(){
+
+	if($('.mapTileContainer.potentialNatureCubeTilePlacement .tileContainer').length) {
+
+		// add the class mapPreviewTileContainer to the currently cloned tile container in the map hex to be able to differentiate between the tile container that's going to be moved from the displayed are for the purposes of fading and removing the preview version
+		$('.mapTileContainer.potentialNatureCubeTilePlacement .tileContainer').addClass('mapPreviewTileContainer');
+
+		// fade out the tileContainer that was cloned into the map hex as a preview so that we can animate the final tile contents from the displayed tile area
+		$('.mapTileContainer.potentialNatureCubeTilePlacement .tileContainer').fadeOut();
+
+		setTimeout(function(){
+			// now that time has passed to fade out the preview tile element that was cloned into the chosen map hex - we can safely remove the previewed tile info
+			$('.tileContainer.mapPreviewTileContainer').remove();
+		}, 400)
+	}
 
 	rotateTileAllowed = false;
 	
 	// store the id of the map hex currently chosen
 	// e.g. -->  row-20-column-19
-	var targID = $(this).parent().attr('id'); 
-
-	// add the class mapPreviewTileContainer to the currently cloned tile container in the map hex to be able to differentiate between the tile container that's going to be moved from the displayed are for the purposes of fading and removing the preview version
-	$('.mapTileContainer.potentialNatureCubeTilePlacement .tileContainer').addClass('mapPreviewTileContainer');
-
-	// fade out the tileContainer that was cloned into the map hex as a preview so that we can animate the final tile contents from the displayed tile area
-	$('.mapTileContainer.potentialNatureCubeTilePlacement .tileContainer').fadeOut();
+	var targID = $(this).attr('id'); 
 
 	// remove the potentialNatureCubeTilePlacement class from of the map hex elements, since we don't need to preview anymore tile information now that a tile placement has been finalized
 	$('.mapTileContainer.potentialNatureCubeTilePlacement').removeClass('potentialNatureCubeTilePlacement');
@@ -674,11 +682,6 @@ $(document).on(touchEvent,'.mapTileContainer.potentialNatureCubeTilePlacement .t
 		$('.mobileTilePlacementOptions.inactiveTileOptions').addClass('activeTileOptions').removeClass('inactiveTileOptions');
 	}, 300)
 
-	setTimeout(function(){
-		// now that time has passed to fade out the preview tile element that was cloned into the chosen map hex - we can safely remove the previewed tile info
-		$('.tileContainer.mapPreviewTileContainer').remove();
-	}, 400)
-	
 })
 
 $(document).on(touchEvent,'#cancelTilePlacement',function(){
