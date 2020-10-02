@@ -1,4 +1,4 @@
-var turnsLeft = 1;
+var turnsLeft = 3;
 
 var wildlife = ['bear', 'fox', 'elk', 'hawk', 'salmon'];
 
