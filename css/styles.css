@@ -1685,43 +1685,31 @@ top: 290px;
     margin: 30px 0px 20px 10px;
 }
 
-#scoringGoalsContainer #scoringTable-FinalScoringModalTrigger {
-    float: left;
-    height: 108px;
-    width: 160px;
-    margin-right: 20px;
+#scoringGoalsContainer .finalScoringItemTrigger {
     position: relative;
-    cursor: pointer;
-    cursor: hand;
-}
-
-#scoringGoalsContainer #scoringTable-FinalScoringModalTrigger #scoringThumbnail {
-    position: absolute;
-    width: 160px;
-    right: 0px;
-}
-
-#scoringGoalsContainer .goalScoringThumbnailContainer {
-	position: relative;
     float: left;
     height: 108px;
     width: 150px;
-    margin: 0px 18px;
+    margin-left: 8px;
 }
 
-#scoringGoalsContainer .goalScoringThumbnailContainer:not(.inactiveScoringItemTrigger) {
+#scoringGoalsContainer .finalScoringItemTrigger:not(:last-child) {
+    margin-right: 40px;
+}
+
+#scoringGoalsContainer .finalScoringItemTrigger:not(.inactiveScoringItemTrigger) {
     cursor: pointer;
     cursor: hand;
 }
 
-#scoringGoalsContainer .goalScoringThumbnailContainer .goalScoringToken {
+#scoringGoalsContainer .finalScoringItemTrigger .goalScoringToken {
     position: absolute;
     width: 48px;
     top: -17px;
     z-index: 1;
 }
 
-#scoringGoalsContainer .goalScoringThumbnailContainer .goalScoringThumbnail {
+#scoringGoalsContainer .finalScoringItemTrigger .goalScoringThumbnail {
 	position: absolute;
     width: 147px;
     right: 0px;
@@ -1736,23 +1724,14 @@ top: 290px;
     display: block;
 }
 
-#scoringGoalsContainer .finalScoringItemTrigger:not(.goalScoringThumbnailContainer) .activeScoringFrame,
-#scoringGoalsContainer .finalScoringItemTrigger:not(.goalScoringThumbnailContainer) .hoverScoringFrame {
+#scoringGoalsContainer .finalScoringItemTrigger .activeScoringFrame,
+#scoringGoalsContainer .finalScoringItemTrigger .hoverScoringFrame {
     position: absolute;
     z-index: 1;
     right: 0px;
     top: 0px;
-    width: 160px;
-    display: none;
-}
-
-#scoringGoalsContainer .finalScoringItemTrigger.goalScoringThumbnailContainer .activeScoringFrame,
-#scoringGoalsContainer .finalScoringItemTrigger.goalScoringThumbnailContainer .hoverScoringFrame {
-    position: absolute;
-    z-index: 1;
-    right: 0px;
-    top: 0px;
-    width: 160px;
+	width: 160px;
+    height: 109px;
     display: none;
 }
 
@@ -3484,7 +3463,7 @@ top: 290px;
 		float: left;
 		height: 6.4vw;
 		width: 6vw;
-		margin: 0vw 1.5vw;
+		margin: 0vw 0vw 0vw 2.9vw;
 	}
 
 	#mobileScoringGoalsContainer .mobileGoalScoringThumbnailContainer:not(.inactiveMobileScoringItemTrigger) {
@@ -3507,7 +3486,21 @@ top: 290px;
 		display: block;
 	}
 
-	#mobileScoringGoalsContainer .mobileFinalScoringItemTrigger .mobileActiveScoringFrame, #mobileScoringGoalsContainer .mobileFinalScoringItemTrigger .mobileHoverScoringFrame {
+	#mobileScoringGoalsContainer #scoringTable-mobileFinalScoringModalTrigger .mobileActiveScoringFrame,
+	 #mobileScoringGoalsContainer #scoringTable-mobileFinalScoringModalTrigger .mobileHoverScoringFrame {
+		position: absolute;
+		z-index: 1;
+		right: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		max-height: 100%;
+		display: none;
+	}
+
+	#mobileScoringGoalsContainer .mobileGoalScoringThumbnailContainer .mobileActiveScoringFrame,
+	#mobileScoringGoalsContainer .mobileGoalScoringThumbnailContainer .mobileHoverScoringFrame {
 		position: absolute;
 		z-index: 1;
 		right: 0px;
@@ -3698,6 +3691,11 @@ top: 290px;
 		padding-left: 5vw!important;
 		padding-right: 5vw!important;
 		width: 31vw!important;
+	}
+
+	.modal.is-active .modalButtonsToCenter .button {
+		padding-left: 7vw!important;
+		padding-right: 7vw!important;
 	}
 
 	#goalTilesContainer {
@@ -3932,8 +3930,8 @@ top: 290px;
 		position: absolute;
 		width: 9.7vw;
 		max-width: 9.7vw;
-		top: 5.1vw;
-		left: 3.6vw;
+		top: 4.4vw;
+		left: 3.4vw;
 	}
 
 	.tokenContainer .redCross {
@@ -4738,6 +4736,7 @@ top: 290px;
 	#quickViewMobileGoalLayer #quickViewMobileGoalFullImages .mobileGoalImg {
 		position: absolute;
 		display: none;
+    	width: 90vw;
 	}
 
 	#quickViewMobileGoalLayer #quickViewMobileGoalFullImages .mobileGoalImg.activeQuickViewGoalImg {
@@ -4903,6 +4902,12 @@ top: 290px;
 	#lastTurnModal .modal-content p {
 		font-size: 3.7vw;
 		margin-bottom: 3vw;
+	}
+
+	#mobileScoringGoalsContainer #scoringTable-mobileFinalScoringModalTrigger .mobileActiveScoringFrame,
+	#mobileScoringGoalsContainer #scoringTable-mobileFinalScoringModalTrigger .mobileHoverScoringFrame {
+		height: 102%;
+		max-height: 102%;
 	}
 
 	#mobileScoringGoalsContainer {
@@ -5185,7 +5190,7 @@ top: 290px;
 	body.gameOver #tileTokenContainer.finalScoring .largeWildlifeFinalScoringInfo .individualWildlifeScoringInputContainer .individualScoringInput {
 		position: absolute;
 		left: 17vw;
-		padding: 4.4vw 0vw 1.1vw;
+		padding: 4.8vw 0vw 1.1vw;
 		width: 54vw;
 		height: 10.5vw;
 		font-size: 6.7vw;
