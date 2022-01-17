@@ -485,11 +485,11 @@ h2:not(.startSummaryTrigger) {
     position: absolute;
     top: 2%;
     left: 50%;
-    margin-left: -30vh;
+    margin-left: -27vh;
     padding: 0px;
     z-index: 10;
     text-align: center;
-    width: 60vh;
+    width: 54vh;
     font-size: 24px;
     box-sizing: border-box;
 }
@@ -1503,7 +1503,8 @@ input[type=range]:focus::-ms-fill-upper {
     height: 147px;
     border: 3px solid #746c5f;
     margin-top: 7px;
-    background-color: #746c5f;
+    /* background-color: #746c5f; */
+    background-color: #f5eee6;
 }
 
 .tapestryActionContainer .trackContainer.shadowEmpireChosenTrack .trackImageContainer {
