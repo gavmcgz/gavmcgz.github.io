@@ -119,6 +119,9 @@
             
 */
 
+#container {
+    touch-action: manipulation;
+}
 
 p, ol, li, a {
     font-family: 'Roboto Condensed', sans-serif!important;
